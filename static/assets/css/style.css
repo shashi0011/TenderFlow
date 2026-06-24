@@ -1,0 +1,84 @@
+.listingData td .mdi {
+    font-size: 16px;
+}
+.card .card-title {
+    font-size: 16px;
+}
+.form-group em {
+    color: #fb4d53;
+}
+h5.formSubtitle {
+    font-size: 15px;
+    margin-top: 15px;
+}
+.card-body h5.formSubtitle:first-child {
+    margin-top: 5px;
+}
+[data-toggle="collapse"] .mdi {
+    float: right;
+    font-weight: bold;
+    font-size: 17px;
+}
+.card-header a {
+    display: inline-block;
+    width: 100%;
+}
+table.listingData thead th {
+    background: #27333a;
+    color: #fff;
+}
+.bootstrap-timepicker-widget table td span.glyphicon:before {
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.bootstrap-timepicker-widget table td span.glyphicon.glyphicon-chevron-up::before {
+    content: "\F143";
+}
+.bootstrap-timepicker-widget table td span.glyphicon.glyphicon-chevron-down::before {
+    content: "\F140";
+}
+.bootstrap-timepicker-widget a.btn, .bootstrap-timepicker-widget input {
+    border-radius: 4px;
+}
+.bootstrap-timepicker-widget table td input {
+    width: 25px;
+    margin: 0;
+    text-align: center;
+}
+.bootstrap-timepicker-widget table td input {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    color: #495057;
+    border: 1px solid #eff2f7;
+    background-color: #fff;
+}
+.error {
+    color: #fb4d53;
+    font-size: 12px;
+}
+.form-group.has-error .form-control {
+    border-color: #fb4d53;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.TableHeader {
+    margin-bottom: 10px;
+}
+label{color:#000}
+.repeatDiv {
+    margin-bottom: 10px;
+}
