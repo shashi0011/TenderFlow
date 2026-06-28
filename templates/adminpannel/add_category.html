@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Add Category</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body data-sidebar="dark">
+    <div id="layout-wrapper">
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <div class="navbar-brand-box">
+                        <a href="{% url 'dashboard' %}" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="/static/assets/images/new_logo.png" alt="Logo" height="40">
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="d-flex pr-2">
+                    <div class="dropdown d-inline-block">
+                        <span class="d-none d-xl-inline-block ml-1">Welcome {{ request.user.first_name }}</span>&nbsp;&nbsp;
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <div id="sidebar-menu">
+                    <div class="px-3 py-3">
+                        <a href="{% url 'dashboard' %}">
+                            <img src="/static/assets/images/new_logo.png" alt="Logo" style="max-width: 140px; width: 100%; height: auto; display: block; object-fit: contain;">
+                        </a>
+                    </div>
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li><a href="{% url 'dashboard' %}" class="waves-effect"><i class="mdi mdi-file-document-box-outline"></i><span>Dashboard</span></a></li>
+                        <li><a href="{% url 'vendors_list' %}" class="waves-effect"><i class="mdi mdi-receipt"></i><span>Vendors</span></a></li>
+                        <li><a href="{% url 'rfp_list' %}" class="waves-effect"><i class="mdi mdi-flip-vertical"></i><span>RFP Lists</span></a></li>
+                        <li><a href="{% url 'quotes_list' %}" class="waves-effect"><i class="mdi mdi-apps"></i><span>RFP Quotes List</span></a></li>
+                        <li><a href="{% url 'category_list' %}" class="waves-effect"><i class="mdi mdi-weather-night"></i><span>Categories List</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">Add New Category</h4>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{% url 'category_list' %}">Categories</a></li>
+                                        <li class="breadcrumb-item active">Add Category</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Enter Category Details</h4>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="categoryName">Category Name</label>
+                                            <input type="text" class="form-control" id="categoryName" name="name" placeholder="Enter category name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success">Add Category</button>
+                                            <a href="{% url 'category_list' %}" class="btn btn-secondary">Cancel</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

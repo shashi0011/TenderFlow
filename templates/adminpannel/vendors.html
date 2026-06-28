@@ -1,28 +1,28 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
     <head>
         <meta charset="utf-8" />
-        <title>ASSAM FLOOD</title>
+        <title>RFP Management</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Skote is a fully featured premium admin dashboard template built on top of awesome Bootstrap 4.4.1" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="/static/assets/images/favicon.ico">
 
 		<!-- DataTables -->
-        <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 		<!-- Responsive datatable examples -->
-        <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 		
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -34,24 +34,12 @@
             <header id="page-topbar">
                 <div class="navbar-header">
                     <div class="d-flex">
-                        <!-- LOGO -->
-                        <div class="navbar-brand-box">
-
-                            <a href="index.html" class="logo logo-light">
-                                <span class="logo-sm">
-                                    <img src="static/assets/images/new_logo.png" alt="" height="40">
-                                </span>
-                                <span class="logo-lg">
-                                    <img src="static/assets/images/new_logo.png" alt="" height="">
-                                </span>
-                            </a>
-                        </div>
                     </div>
 
                     <div class="d-flex pr-2">
 						<div class="dropdown d-inline-block">
-                            <span class="d-none d-xl-inline-block ml-1" key="t-henry">Welcome Henry</span>&nbsp;&nbsp;
-                            <a class="" href="#">Logout</span></a>
+                            <span class="d-none d-xl-inline-block ml-1" key="t-henry">Welcome {{ request.user.first_name }}</span>&nbsp;&nbsp;
+                            <a class="" href="{% url 'logout' %}">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -64,37 +52,42 @@
 
                     <!--- Sidemenu -->
                     <div id="sidebar-menu">
+                        <div class="px-3 py-3">
+                            <a href="{% url 'dashboard' %}">
+                                <img src="/static/assets/images/new_logo.png" alt="Logo" style="max-width: 140px; width: 100%; height: auto; display: block; object-fit: contain;">
+                            </a>
+                        </div>
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li>
-                                <a href="dashboard.html" class="waves-effect">
+                                <a href="{% url 'dashboard' %}" class="waves-effect">
                                     <i class="mdi mdi-file-document-box-outline"></i>
                                     <span>Dashboard</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="vendors.html" class="waves-effect">
+                                <a href="{% url 'vendors_list' %}" class="waves-effect">
                                     <i class="mdi mdi-receipt"></i>
                                     <span>Vendors</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="rfp.html" class="waves-effect">
+                                <a href="{% url 'rfp_list' %}" class="waves-effect">
                                     <i class="mdi mdi-flip-vertical"></i>
                                     <span>RFP Lists</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="users.html" class="waves-effect">
+                                <a href="{% url 'quotes_list' %}" class="waves-effect">
                                     <i class="mdi mdi-apps"></i>
-                                    <span>User Management</span>
+                                    <span>RFP Quotes List</span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#" class="waves-effect">
+                                <a href="{% url 'category_list' %}" class="waves-effect">
                                     <i class="mdi mdi-weather-night"></i>
-                                    <span>Categories</span>
+                                    <span>Categories List</span>
                                 </a>
                             </li>
 
@@ -118,12 +111,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                                    <h4 class="mb-0 font-size-18">User List</h4>
+                                    <h4 class="mb-0 font-size-18">Vendors List</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                                            <li class="breadcrumb-item active">Users</li>
+                                            <li class="breadcrumb-item active">Vendors</li>
                                         </ol>
                                     </div>
                                     
@@ -132,43 +125,6 @@
                         </div>     
                         <!-- end page title -->
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-4">Filter</h5>
-
-                                        <form class="">              
-											<div class="row">
-												<div class="col-lg-4 col-md-4">
-													
-													<label class="sr-only" for="inlineFormSearchl2">Search</label>
-													<div class="input-group mb-2 mr-sm-3">
-													  <div class="input-group-prepend">
-														<div class="input-group-text"><i class="mdi mdi-magnify"></i></div>
-													  </div>
-													  <input type="text" class="form-control" id="inlineFormSearchl2" placeholder="Search">
-													</div>
-												</div>
-												<div class="col-lg-4 col-md-4">
-													<select class="form-control" id="userstatus" name="userstatus">
-														<option value="">Select Status</option>
-														<option value="1">Active</option>
-														<option value="2">Inactive</option>
-													</select>
-												</div>
-											
-												<div class="col-lg-4 col-md-4 text-right">
-													<button type="submit" class="btn btn-primary mb-2">Submit</button>
-													<button type="submit" class="btn btn-secondary ml-2 mb-2">Reset</button>
-												</div>
-											</div>
-                                            
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- end row -->
 						
 						
@@ -180,7 +136,7 @@
 										<div class="TableHeader">
 											<div class="row">
 												<div class="col-lg-3">
-													<h4 class="card-title">Users</h4>
+													<h4 class="card-title">Vendors</h4>
 												</div>
 											</div>
 										</div>	
@@ -192,55 +148,38 @@
                                                         <th>First name</th>
                                                         <th>Last Name</th>
                                                         <th>Email</th>
+                                                        <th>Contact No</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    {% for vendor in vendors %}
                                                     <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Aman</td>
-                                                        <td>Sharma</td>
-                                                        <td>aman@gmail.com</td>
-                                                        <td><span class="badge badge-pill badge-success">Active</span></td>
+                                                        <th scope="row">{{ forloop.counter }}</th>
+                                                        <td>{{ vendor.user.first_name }}</td>
+                                                        <td>{{ vendor.user.last_name }}</td>
+                                                        <td>{{ vendor.user.email }}</td>
+                                                        <td>{{ vendor.phone }}</td>
                                                         <td>
-															<a href="edituser.html" class="text-primary mr-2"><i class="mdi mdi-pencil"></i></a>
-															<a href="#" class="text-danger"><i class="mdi mdi-circle-off-outline"></i></a>
+                                                            {% if vendor.status == "approved" %}
+                                                                <span class="badge badge-pill badge-success">Approved</span>
+                                                            {% elif vendor.status == "rejected" %}
+                                                                <span class="badge badge-pill badge-danger">Rejected</span>
+                                                            {% else %}
+                                                                <span class="badge badge-pill badge-warning">Pending</span>
+                                                            {% endif %}
+                                                        </td>
+                                                        <td>
+															<a href="{% url 'vendor_status' vendor.id 'approved' %}" class="text-success mr-2" title="Approve"><i class="mdi mdi-check"></i></a>
+															<a href="{% url 'vendor_status' vendor.id 'rejected' %}" class="text-danger" title="Reject"><i class="mdi mdi-close"></i></a>
 														</td>
                                                     </tr>
+                                                    {% empty %}
                                                     <tr>
-                                                        <th scope="row">2</th>
-														<td>Gagan</td>
-														<td>Kumar</td>
-                                                        <td>gagan456@gmail.com</td>
-                                                        <td><span class="badge badge-pill badge-success">Active</span></td>
-                                                        <td>
-															<a href="edituser.html" class="text-primary mr-2"><i class="mdi mdi-pencil"></i></a>
-															<a href="#" class="text-danger"><i class="mdi mdi-circle-off-outline"></i></a>
-														</td>
+                                                        <td colspan="7">No vendors found.</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-														<td>Vinay</td>
-														<td>Singh</td>
-                                                        <td>vinay009@gmail.com</td>
-                                                        <td><span class="badge badge-pill badge-success">Active</span></td>
-                                                        <td>
-															<a href="edituser.html" class="text-primary mr-2"><i class="mdi mdi-pencil"></i></a>
-															<a href="#" class="text-danger"><i class="mdi mdi-circle-off-outline"></i></a>
-														</td>
-                                                    </tr>
-													<tr>
-                                                        <th scope="row">4</th>
-														<td>Ravi</td>
-														<td>Raj</td>
-                                                        <td>ravi@gmail.com</td>
-                                                        <td><span class="badge badge-pill badge-danger">Inactive</span></td>
-                                                        <td>
-															<a href="edituser.html" class="text-primary mr-2"><i class="mdi mdi-pencil"></i></a>
-															<a href="#" class="text-danger"><i class="mdi mdi-circle-off-outline"></i></a>
-														</td>
-                                                    </tr>
+                                                    {% endfor %}
 													
                                                 </tbody>
                                             </table>
@@ -303,3 +242,4 @@
 
     </body>
 </html>
+

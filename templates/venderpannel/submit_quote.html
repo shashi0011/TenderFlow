@@ -1,0 +1,24 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<h3>Submit Quote</h3>
+
+<p><strong>RFP:</strong> {{ rfp_vendor.rfp.title }}</p>
+<p><strong>Item:</strong> {{ rfp_vendor.rfp.item_name }}</p>
+<p><strong>Quantity:</strong> {{ rfp_vendor.rfp.quantity }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>Price Per Item Including GST</label>
+        <input type="number" step="0.01" name="price" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label>Total Cost</label>
+        <input type="number" step="0.01" name="total_cost" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="{% url 'vendor_rfp' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
+
